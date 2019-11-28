@@ -11,6 +11,16 @@ frontend/coverage
 # production
 frontened/build
 
+# python
+backend/venv
+__pycache__/
+
+# vscode
+.vscode/
+
+# sqlite
+backend/*.sqlite*
+
 # misc
 .DS_Store
 .env.local
