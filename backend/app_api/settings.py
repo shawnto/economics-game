@@ -27,10 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'resources.User'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'resources.apps.ResourcesConfig',
+    'game_management.apps.GameManagementConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

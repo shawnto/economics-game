@@ -19,31 +19,34 @@ class App extends React.Component {
                 // flip current auth value. simple way to fake logging in and out
                 isAuth: (state.isAuth ? false : true),
                 userName: (state.userName.length > 0 ? '' : 'user name'),
+                isGm: true
             }));
         };
         // default state for user context.
-        this.state = { isAuth: false, userName: '', setAuth: this.setAuth};
+        this.state = { isAuth: false, userName: '', setAuth: this.setAuth, isGm: false};
     }
     render(){
         return (
-                <div className="App">
+            <div className="App">
                 <Router>
-                <UserContext.Provider value={this.state}>
-                <NavBar />
-                </UserContext.Provider>
-                <Switch>
-                <Route path="/login">
-                <UserContext.Provider value={this.state}>
-                <LoginPage />
-                </UserContext.Provider>
-                </Route>
-                <PrivateRoute path="/user-settings" isAuth={this.state.isAuth}>
-                <UserSettings />
-                </PrivateRoute>
-                <PrivateRoute Path="/" isAuth={this.state.isAuth}>
-                <HomePage />
-                </PrivateRoute>
-                </Switch>
+                    <UserContext.Provider value={this.state}>
+                        <NavBar />
+                    </UserContext.Provider>
+                    <Switch>
+                        <Route path="/login">
+                            <UserContext.Provider value={this.state}>
+                                <LoginPage />
+                            </UserContext.Provider>
+                        </Route>
+                        <PrivateRoute path="/user-settings" isAuth={this.state.isAuth}>
+                            <UserSettings />
+                        </PrivateRoute>
+                        <PrivateRoute Path="/" isAuth={this.state.isAuth}>
+                            <UserContext.Provider value={this.state}>
+                                <HomePage />
+                            </UserContext.Provider>
+                        </PrivateRoute>
+                    </Switch>
                 </Router>
 
             </div>
