@@ -4,7 +4,8 @@ import React from 'react';
 export const user = {
     isAuth: false,
     userName: '',
-    setAuth: () => {}
+    setAuth: () => {},
+    isGm: false
 }
 
 
